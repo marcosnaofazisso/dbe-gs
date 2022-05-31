@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+>
+
+<ui:composition template="/_template.xhtml">
+    <ui:define name="content">
+
+        <p:messages id="msg">
+            <p:autoUpdate />
+        </p:messages>
+
+        <h:form>
+            <div class="card" style="margin:1em">
+                <p:dataTable var="visitante" value="#{visitanteBean.all}" editable="true">
+
+                    <p:column headerText="Imagem">
+                        <img
+                                src="#{request.contextPath}#{visitante.imagePath}"
+                                class="thumb"
+                        />
+
+                    </p:column>
+
+                    <p:column headerText="ID">
+                        <h:outputText value="#{visitante.idVisitante}" />
+                    </p:column>
+
+                    <p:column headerText="Nome">
+                        <p:cellEditor>
+                            <f:facet name="output">
+                                <h:outputText value="#{visitante.nomeVisitante}" />
+                            </f:facet>
+                            <f:facet name="input">
+                                <p:inputText value="#{visitante.nomeVisitante}" />
+                            </f:facet>
+                        </p:cellEditor>
+                    </p:column>
+
+                    <p:column headerText="Data de Nascimento">
+                        <h:outputText value="#{visitante.dataNascimento}" >
+                            <f:convertDateTime pattern="dd/MM/yyyy" type="localDate"/>
+                        </h:outputText>
+                    </p:column>
+
+                    <p:column headerText="CPF">
+                        <h:outputText value="#{visitante.numeroCpf}" />
+                    </p:column>
+
+                    <p:column headerText="RG">
+                        <h:outputText value="#{visitante.numeroRg}" />
+                        <h:outputText value="-#{visitante.numeroDigitoRg}" />
+                    </p:column>
+
+                    <p:column headerText="Data de Cadastro">
+                        <h:outputText value="#{visitante.dataCadastro}">
+                            <f:convertDateTime pattern="dd/MM/yyyy" type="localDate"/>
+                        </h:outputText>
+                    </p:column>
+
+                </p:dataTable>
+            </div>
+        </h:form>
+
+    </ui:define>
+</ui:composition>
+
+</html>
