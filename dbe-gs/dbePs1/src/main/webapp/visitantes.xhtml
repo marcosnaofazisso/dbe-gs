@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+>
+
+<!--         RM86904 Marcos Vinicius Mendes Ferreira -->
+<!-- 		RM88849 Priscila Nastacio Fernandes de Sá -->
+
+<ui:composition template="/_template.xhtml">
+    <ui:define name="content">
+
+        <p:messages id="msg">
+            <p:autoUpdate />
+        </p:messages>
+
+        <h:form>
+            <div class="card" style="margin:1em">
+                <p:dataTable var="setup" value="#{visitanteBean.all}" editable="true">
+
+                    <p:column headerText="img">
+                        <img
+                                src="#{request.contextPath}#{visitanteBean.imagePath}"
+                                class="thumb"
+                        />
+
+                    </p:column>
+
+                    <p:column headerText="id">
+                        <h:outputText value="#{visitanteBean.visitante.idVisitante}" />
+                    </p:column>
+
+                    <p:column headerText="Name">
+                        <p:cellEditor>
+                            <f:facet name="output">
+                                <h:outputText value="#{visitanteBean.visitante.nomeVisitante}" />
+                            </f:facet>
+                            <f:facet name="input">
+                                <p:inputText value="#{visitanteBean.visitante.nomeVisitante}" />
+                            </f:facet>
+                        </p:cellEditor>
+                    </p:column>
+
+                </p:dataTable>
+            </div>
+        </h:form>
+
+    </ui:define>
+</ui:composition>
+
+
+
+</html>

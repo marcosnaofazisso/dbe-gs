@@ -1,0 +1,17 @@
+<pretty-config xmlns="http://ocpsoft.org/schema/rewrite-config-prettyfaces"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://ocpsoft.org/schema/rewrite-config-prettyfaces
+                      http://ocpsoft.org/xml/ns/prettyfaces/rewrite-config-prettyfaces.xsd">
+
+	<url-mapping id="home">
+		<pattern value="/" />
+		<view-id value="visitantes.xhtml" />
+	</url-mapping>
+
+	<url-mapping id="visitante-new">
+		<pattern value="/visitante" />
+		<view-id value="visitante_new.xhtml" />
+	</url-mapping>
+
+
+</pretty-config>

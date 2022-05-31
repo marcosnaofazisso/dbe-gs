@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/_template.xhtml">
+  <ui:define name="content">
+
+    <p:messages id="msg">
+      <p:autoUpdate />
+    </p:messages>
+
+    <!-- FORM -->
+    <h:form enctype="multipart/form-data">
+      <p:card style="width: 25em; margin: 1em auto">
+        <f:facet name="title">
+          New Visitante
+        </f:facet>
+
+        <div class="ui-fluid">
+          <div class="p-field">
+            <label for="name">Name</label>
+            <p:inputText
+                    id="name"
+                    type="text"
+                    value="#{visitanteBean.visitante.nomeVisitante}"
+                    required="true"
+                    requiredMessage="O campo nome é obrigatório"
+            >
+              <f:ajax event="blur" render="msg" />
+            </p:inputText>
+          </div>
+          <div class="p-field">
+            <label for="dataNascimento">Data de Nascimento</label>
+            <p:datePicker id="dataNascimento"
+                          pattern="dd/MM/yyyy"
+                          value="#{visitanteBean.visitante.dataNascimento}"
+                          required="true"
+                          requiredMessage="O campo data é obrigatório"/>
+<!--              <f:ajax event="blur" render="msg" />-->
+          </div>
+          <div class="p-field">
+            <label for="cpf">CPF</label>
+            <p:inputNumber
+                    id="cpf"
+                    value="#{visitanteBean.visitante.numeroCpf}"
+                    required="true"
+                    validatorMessage="O CPF deve ter 12 caracteres">
+<!--              <f:validateLength minimum="12" />-->
+              <f:ajax event="blur" render="msg" />
+            </p:inputNumber>
+          </div>
+          <div class="p-field">
+            <label for="rg">RG</label>
+            <p:inputNumber
+                    id="rg"
+                    value="#{visitanteBean.visitante.numeroRg}"
+                    required="true"
+                    validatorMessage="O RG deve ter 8 caracteres"
+            >
+              <f:validateLength minimum="8" />
+              <f:ajax event="blur" render="msg" />
+            </p:inputNumber>
+          </div>
+          <div class="p-field">
+            <label for="image">Image</label>
+            <p:fileUpload
+                    allowTypes=".jpg"
+                    mode="simple"
+                    id="image"
+                    skinSimple="true"
+                    value="#{visitanteBean.image}"
+            />
+          </div>
+        </div>
+
+        <f:facet name="footer">
+          <p:commandButton icon="pi pi-check" value="Save"
+                           action="#{visitanteBean.save()}" />
+          <p:commandButton icon="pi pi-times" value="Cancel"
+                           styleClass="ui-button-secondary" style="margin-left: .5em" />
+        </f:facet>
+      </p:card>
+    </h:form>
+  </ui:define>
+</ui:composition>
+
+
+</html>
