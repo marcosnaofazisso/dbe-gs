@@ -31,11 +31,16 @@ public class VisitanteBean {
 
 	public String save() {
 		System.out.println("Aqui esta um visitante ============[ " + this.visitante + "]");
-		System.out.println("");
-		System.out.println("");
-		System.out.println("");
-		System.out.println("");
+		System.out.println("/");
+		System.out.println("/");
+		System.out.println("/");
+		System.out.println("/");
 		visitante.setImagePath(UploadService.write(image, "visitantes"));
+		System.out.println("IMAGE [" + visitante.getImagePath() +"]");
+		System.out.println("/");
+		System.out.println("/");
+		System.out.println("/");
+		System.out.println("/");
 		dao.create(visitante);
 
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Visitor sucessful registered !!!!!!!!!"));
